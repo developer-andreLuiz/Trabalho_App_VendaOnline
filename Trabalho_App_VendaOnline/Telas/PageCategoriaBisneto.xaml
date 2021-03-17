@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppMercado.Telas.PageCategoriaBisneto">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <!-- Barra Superior de Menu -->
+            <Grid BackgroundColor="#0028FF" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="15*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0" x:Name="imgBtnHome" Source="home.png" Aspect="AspectFit"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="#0028FF" Clicked="imgBtnHome_Clicked"/>
+                <SearchBar Grid.Column="1" Placeholder="Procurar Produtos..." VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" TextColor="White"/>
+                <ImageButton Grid.Column="2" x:Name="imgBtnCarrinho" Source="carrinhocompra.png" Aspect="AspectFit"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="#0028FF" Clicked="imgBtnCarrinho_Clicked"/>
+            </Grid>
+            <!-- Collection View Bisneto -->
+            <CollectionView Grid.Row="1" x:Name="collectionViewTela" Margin="0,0,0,0" SelectionMode="None" ItemSizingStrategy="MeasureAllItems">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5">
+
+                            <Frame BorderColor="LightGray" CornerRadius="15" HasShadow="False" Padding="5" IsClippedToBounds="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="2" ColumnSpacing="5" RowSpacing="0" Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Start">
+                                        <Image.Source>
+                                            <UriImageSource Uri="{Binding img}" CachingEnabled="False" CacheValidity="0" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label x:Name="lblNome" Grid.Column="1" Grid.Row="0" Text="{Binding nomeBisneto}" FontSize="12" TextColor="#000000" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                                </Grid>
+                            </Frame>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
